@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ကလေးလေးရေအတွက် ❣️</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ font-family:Arial,sans-serif;
+ min-height:100vh;
+ background:linear-gradient(135deg,#ffd6e7,#fff1f6,#ffc6dc);
+ color:#b13c70;overflow-x:hidden;
+}
+#particles{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:5}
+.particle{
+ position:absolute;bottom:-50px;
+ animation:floatUp linear forwards;
+}
+@keyframes floatUp{
+ to{transform:translateY(-115vh) rotate(360deg);opacity:0}
+}
+.card{
+ width:92%;max-width:420px;
+ margin:35px auto;padding:28px 20px;
+ background:#ffffffdf;border:2px solid white;
+ border-radius:30px;text-align:center;
+ box-shadow:0 15px 45px #d65a8a30;
+ animation:cardIn 1s ease;
+}
+@keyframes cardIn{
+ from{opacity:0;transform:translateY(35px) scale(.94)}
+ to{opacity:1;transform:translateY(0) scale(1)}
+}
+h1{color:#e2528d;font-size:26px;margin:15px 0}
+h2{color:#d64e86;margin:15px 0}
+p{line-height:2;margin:12px 0}
+.bigheart{
+ font-size:65px;display:inline-block;
+ animation:heartbeat 1.2s infinite;
+}
+@keyframes heartbeat{
+ 0%,100%{transform:scale(1)}
+ 20%{transform:scale(1.2)}
+ 40%{transform:scale(1)}
+ 60%{transform:scale(1.15)}
+}
+button{
+ border:0;padding:14px 23px;border-radius:30px;
+ background:linear-gradient(120deg,#f58bb5,#e74d8b);
+ color:white;font-weight:bold;font-size:15px;
+ margin:10px 4px;cursor:pointer;
+ box-shadow:0 5px 15px #e9579140;
+}
+button:active{transform:scale(.9)}
+.hidden{display:none!important}
+.envelope{
+ position:relative;width:140px;height:100px;
+ margin:55px auto 35px;background:#f7a3c2;
+ border-radius:8px;cursor:pointer;
+ animation:bounce 1.5s infinite;
+}
+.envelope:before{
+ content:"";position:absolute;top:0;left:0;
+ border-left:70px solid transparent;
+ border-right:70px solid transparent;
+ border-top:55px solid #ee76a3;
+ transform-origin:top;transition:transform .8s;
+ z-index:2;
+}
+.envelope:after{
+ content:"💌";position:absolute;font-size:42px;
+ left:49px;top:30px;
+}
+.envelope.open:before{transform:rotateX(180deg)}
+@keyframes bounce{50%{transform:translateY(-12px)}}
+.letter{
+ background:#fff0f5;padding:23px 16px;
+ border:1px dashed #e98db2;border-radius:20px;
+ margin:20px 0;line-height:2.2;
+ animation:letterIn 1s ease;
+}
+@keyframes letterIn{
+ from{opacity:0;transform:translateY(30px)}
+ to{opacity:1;transform:translateY(0)}
+}
+.photo{font-size:75px;margin:25px;animation:bounce 2s infinite}
+.finalheart{font-size:75px;animation:heartPop 1s infinite alternate}
+@keyframes heartPop{
+ from{transform:scale(.8)}
+ to{transform:scale(1.25)}
+}
+.footer{font-size:12px;color:#c77a98;margin-top:25px}
+</style>
+</head>
+
+<body>
+<div id="particles"></div>
+
+<div class="card">
+
+<!-- WELCOME -->
+<section id="page1">
+ <div class="bigheart">💗</div>
+ <h1>ကလေးလေးရေ ❣️</h1>
+ <p>ဒီနေ့ မင်းအတွက် Surprise လေးတစ်ခုရှိတယ်နော် 🥰</p>
+ <div class="photo">🧸🌸💗</div>
+ <p>အချိန်လေးခဏပေးပြီး ကြည့်ပေးပါဦး...</p>
+ <button onclick="goPage(2)">Open Your Surprise 💌</button>
+</section>
+
+<!-- ENVELOPE -->
+<section id="page2" class="hidden">
+ <div class="bigheart">💌</div>
+ <h1>ကလေးလေးအတွက် 💗</h1>
+ <p>ဒီစာအိတ်လေးကို ဖွင့်ကြည့်ပါဦးနော် 💕</p>
+ <div class="envelope" id="env" onclick="openLetter()"></div>
+ <button onclick="openLetter()">Open Letter 💗</button>
+</section>
+
+<!-- LOVE LETTER -->
+<section id="page3" class="hidden">
+ <div class="bigheart">🌷</div>
+ <h1>For You, ကလေးလေး ❣️</h1>
+
+ <div class="letter">
+ ဟိုင်း... ကလေးလေးရေ ❣️<br><br>
+
+ တစ်ခါတလေ လူတစ်ယောက်နဲ့ စကားပြောရတာက
+ သာမန်လေးပဲ ဖြစ်ပေမဲ့
+ ကိုယ့်အတွက်တော့ ပျော်ရွှင်မှုလေးတွေ
+ ပေးနိုင်တယ်နော်။ 🥰<br><br>
+
+ မင်းနဲ့ စကားပြောရတဲ့ အချိန်လေးတွေက
+ ကိုယ့်နေ့ရက်တွေကို ပိုပြီး လှပစေတယ်။<br><br>
+
+ မင်းရဲ့အပြုံးလေးတွေကိုလည်း
+ အမြဲမြင်ချင်ပါတယ်။ 🌸<br><br>
+
+ <b>မင်းဟာ ကိုယ့်အတွက် ချစ်စရာကောင်းတဲ့
+ လူတစ်ယောက်ပါ။ ❤️</b>
+ </div>
+
+ <button onclick="goPage(4)">One More Surprise 🎁</button>
+</section>
+
+<!-- FINAL -->
+<section id="page4" class="hidden">
+ <div class="finalheart">💝</div>
+ <h1>ကလေးလေးရေ... ❣️</h1>
+
+ <div class="letter">
+ မင်းအမြဲတမ်း ပျော်ရွှင်ပါစေ။ 🌷<br>
+ စိတ်ညစ်စရာတွေ နည်းပါစေ။<br>
+ မင်းရဲ့အပြုံးလေးလည်း မပျောက်ပါစေနဲ့။ 💗<br><br>
+
+ ဒီ Website လေးကနေတစ်ဆင့်
+ မင်းကို ပျော်စေချင်ရုံလေးပါ။ 🥰
+ </div>
+
+ <h2>Keep Smiling, Beautiful! ✨</h2>
+ <div class="photo">🧸💗🌹</div>
+
+ <p>With Love,</p>
+ <h2>ကိုယ် ❤️</h2>
+
+ <button onclick="goPage(1)" style="background:#fff;color:#d95186">
+ Read Again ↻
+ </button>
+</section>
+
+<div class="footer">Made with lots of love 💗</div>
+</div>
+
+<script>
+function goPage(n){
+ for(let i=1;i<=4;i++){
+  document.getElementById('page'+i).classList.add('hidden');
+ }
+ document.getElementById('page'+n).classList.remove('hidden');
+ window.scrollTo({top:0,behavior:'smooth'});
+ if(n===4) explosion();
+}
+
+function openLetter(){
+ document.getElementById('env').classList.add('open');
+ setTimeout(()=>goPage(3),900);
+}
+
+function makeParticle(){
+ const p=document.createElement('span');
+ p.className='particle';
+ const icons=['💗','💕','🌸','✨','💖','🌷','❣️'];
+ p.textContent=icons[Math.floor(Math.random()*icons.length)];
+ p.style.left=Math.random()*100+'vw';
+ p.style.fontSize=(15+Math.random()*25)+'px';
+ p.style.animationDuration=(5+Math.random()*6)+'s';
+ document.getElementById('particles').appendChild(p);
+ setTimeout(()=>p.remove(),11000);
+}
+
+setInterval(makeParticle,350);
+
+function explosion(){
+ for(let i=0;i<35;i++){
+  setTimeout(makeParticle,i*35);
+ }
+}
+</script>
+</body>
+</html>
