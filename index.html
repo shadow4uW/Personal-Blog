@@ -9,73 +9,262 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+Myanmar:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root{--ink:#25213b;--muted:#77738b;--paper:#fffaf6;--purple:#7958e8;--pink:#ff7e9f;--orange:#ffad66;--mint:#9edfc9;--line:#eee8e5;--shadow:0 18px 55px #51405a12}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans","Noto Sans Myanmar",sans-serif;line-height:1.7}
-    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
-    .topbar{padding:20px 0}.nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{font-weight:800;font-size:1.2rem;letter-spacing:-.5px;display:flex;align-items:center;gap:10px}.brand-mark{width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,var(--purple),var(--pink));display:grid;place-items:center;color:white;font-size:20px;box-shadow:0 8px 20px #7958e844}
-    .links{display:flex;gap:26px;color:#615d72;font-size:.94rem}.links a:hover{color:var(--purple)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans","Noto Sans Myanmar",sans-serif;line-height:1.7}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+    .topbar{padding:20px 0}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-weight:800;font-size:1.2rem;letter-spacing:-.5px;display:flex;align-items:center;gap:10px}
+    .brand-mark{width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,var(--purple),var(--pink));display:grid;place-items:center;color:white;font-size:20px;box-shadow:0 8px 20px #7958e844}
+    .links{display:flex;gap:26px;color:#615d72;font-size:.94rem}
+    .links a:hover{color:var(--purple)}
     .hello{border:1px solid #e9e0dc;padding:9px 16px;border-radius:999px;font-size:.88rem;font-weight:700;background:#fff}
     .hero{padding:54px 0 58px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:45px}
     .eyebrow{display:inline-flex;align-items:center;gap:8px;background:#f0eaff;color:#694bd0;padding:7px 13px;border-radius:999px;font-size:.8rem;font-weight:800;letter-spacing:.2px}
     h1{font-size:clamp(2.6rem,6vw,5rem);line-height:1.12;letter-spacing:-2.8px;margin:20px 0 18px;font-weight:800}
     .gradient{background:linear-gradient(100deg,#7858e8 5%,#f06f9a 58%,#f2a15f);-webkit-background-clip:text;background-clip:text;color:transparent}
     .intro{font-size:1.05rem;color:var(--muted);max-width:530px;margin:0 0 25px}
-    .actions{display:flex;gap:12px;flex-wrap:wrap}.btn{padding:12px 19px;border-radius:13px;font-weight:800;font-size:.92rem;display:inline-flex;align-items:center;gap:8px}.primary{background:var(--ink);color:#fff;box-shadow:0 10px 24px #25213b25}.secondary{background:white;border:1px solid var(--line)}
-    .art{min-height:370px;position:relative;display:grid;place-items:center}.blob{position:absolute;width:310px;height:310px;background:linear-gradient(145deg,#fbd2dd,#d9ccff 65%,#c6f0e3);border-radius:43% 57% 63% 37%/43% 43% 57% 57%;transform:rotate(-12deg)}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:12px 19px;border-radius:13px;font-weight:800;font-size:.92rem;display:inline-flex;align-items:center;gap:8px}
+    .primary{background:var(--ink);color:#fff;box-shadow:0 10px 24px #25213b25}
+    .secondary{background:white;border:1px solid var(--line)}
+    .art{min-height:370px;position:relative;display:grid;place-items:center}
+    .blob{position:absolute;width:310px;height:310px;background:linear-gradient(145deg,#fbd2dd,#d9ccff 65%,#c6f0e3);border-radius:43% 57% 63% 37%/43% 43% 57% 57%;transform:rotate(-12deg)}
     .note{position:relative;width:260px;min-height:285px;background:#fff;border-radius:22px;padding:25px;box-shadow:0 25px 65px #55436b25;transform:rotate(5deg);border:1px solid #ffffff}
-    .note-top{display:flex;justify-content:space-between;color:#aaa;font-size:.8rem}.note h3{font-size:1.55rem;line-height:1.35;margin:24px 0 12px}.note p{color:var(--muted);font-size:.9rem}.scribble{font-size:2.6rem;margin-top:8px}
-    .spark{position:absolute;font-size:2rem}.s1{top:32px;right:42px}.s2{bottom:28px;left:28px}.s3{top:55px;left:25px}
-    .section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:12px 0 22px}.section-head h2{font-size:1.8rem;letter-spacing:-.8px;margin:0}.section-head p{color:var(--muted);margin:3px 0 0;font-size:.92rem}
-    .filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}.filter{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font:inherit;font-size:.83rem;color:#6f6a7d;cursor:pointer}.filter.active{background:var(--ink);color:white;border-color:var(--ink)}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.post{background:#fff;border:1px solid #f0eae6;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:.22s}.post:hover{transform:translateY(-5px);box-shadow:0 22px 55px #51405a1c}
-    .cover{height:170px;display:grid;place-items:center;font-size:3.6rem;position:relative;overflow:hidden}.cover:after{content:"";position:absolute;width:170px;height:170px;border:1px solid #ffffff77;border-radius:50%;right:-35px;top:-65px}.c1{background:linear-gradient(135deg,#fbd4dc,#ffd8ad)}.c2{background:linear-gradient(135deg,#d7d0ff,#b9e9e0)}.c3{background:linear-gradient(135deg,#ffdfaa,#f8c7e1)}.cover span{filter:drop-shadow(0 10px 10px #51405a22)}
-    .post-body{padding:19px}.tag{font-size:.72rem;font-weight:800;color:#7958e8;background:#f1edff;padding:5px 9px;border-radius:999px}.post h3{font-size:1.12rem;line-height:1.45;margin:13px 0 8px}.post p{color:var(--muted);font-size:.88rem;margin:0 0 16px}.meta{display:flex;justify-content:space-between;color:#a09aaa;font-size:.76rem;border-top:1px solid #f2eeeb;padding-top:12px}
-    .about{margin:76px 0 60px;background:#f1edff;border-radius:26px;padding:35px;display:grid;grid-template-columns:90px 1fr;gap:22px;align-items:center}.avatar{width:82px;height:82px;border-radius:25px;background:linear-gradient(135deg,#ff9eb7,#a994ff);display:grid;place-items:center;font-size:2.3rem}.about h2{margin:0 0 6px;font-size:1.55rem}.about p{margin:0;color:#6e6880;max-width:720px}
-    footer{border-top:1px solid var(--line);padding:25px 0 35px;color:#9993a3;font-size:.82rem}.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    .note-top{display:flex;justify-content:space-between;color:#aaa;font-size:.8rem}
+    .note h3{font-size:1.55rem;line-height:1.35;margin:24px 0 12px}
+    .note p{color:var(--muted);font-size:.9rem}
+    .scribble{font-size:2.6rem;margin-top:8px}
+    .spark{position:absolute;font-size:2rem}
+    .s1{top:32px;right:42px}
+    .s2{bottom:28px;left:28px}
+    .s3{top:55px;left:25px}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:12px 0 22px}
+    .section-head h2{font-size:1.8rem;letter-spacing:-.8px;margin:0}
+    .section-head p{color:var(--muted);margin:3px 0 0;font-size:.92rem}
+    .filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+    .filter{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font:inherit;font-size:.83rem;color:#6f6a7d;cursor:pointer}
+    .filter.active{background:var(--ink);color:white;border-color:var(--ink)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .post{background:#fff;border:1px solid #f0eae6;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:.22s}
+    .post:hover{transform:translateY(-5px);box-shadow:0 22px 55px #51405a1c}
+    .cover{height:170px;display:grid;place-items:center;font-size:3.6rem;position:relative;overflow:hidden}
+    .cover:after{content:"";position:absolute;width:170px;height:170px;border:1px solid #ffffff77;border-radius:50%;right:-35px;top:-65px}
+    .c1{background:linear-gradient(135deg,#fbd4dc,#ffd8ad)}
+    .c2{background:linear-gradient(135deg,#d7d0ff,#b9e9e0)}
+    .c3{background:linear-gradient(135deg,#ffdfaa,#f8c7e1)}
+    .cover span{filter:drop-shadow(0 10px 10px #51405a22)}
+    .post-body{padding:19px}
+    .tag{font-size:.72rem;font-weight:800;color:#7958e8;background:#f1edff;padding:5px 9px;border-radius:999px}
+    .post h3{font-size:1.12rem;line-height:1.45;margin:13px 0 8px}
+    .post p{color:var(--muted);font-size:.88rem;margin:0 0 16px}
+    .meta{display:flex;justify-content:space-between;color:#a09aaa;font-size:.76rem;border-top:1px solid #f2eeeb;padding-top:12px}
+    .about{margin:76px 0 60px;background:#f1edff;border-radius:26px;padding:35px;display:grid;grid-template-columns:90px 1fr;gap:22px;align-items:center}
+    .avatar{width:82px;height:82px;border-radius:25px;background:linear-gradient(135deg,#ff9eb7,#a994ff);display:grid;place-items:center;font-size:2.3rem}
+    .about h2{margin:0 0 6px;font-size:1.55rem}
+    .about p{margin:0;color:#6e6880;max-width:720px}
+    footer{border-top:1px solid var(--line);padding:25px 0 35px;color:#9993a3;font-size:.82rem}
+    .foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
     .empty{display:none;padding:28px;text-align:center;color:var(--muted);background:white;border-radius:16px}
-    @media(max-width:800px){.hero{grid-template-columns:1fr;gap:10px;padding-top:35px}.art{min-height:330px}.grid{grid-template-columns:repeat(2,1fr)}.links{gap:14px}}
-    @media(max-width:560px){.wrap{width:min(100% - 28px,1120px)}.links{display:none}.hello{padding:8px 12px}.hero{padding-bottom:30px}h1{letter-spacing:-1.8px}.art{min-height:300px}.blob{width:260px;height:260px}.note{width:225px;min-height:250px}.grid{grid-template-columns:1fr}.cover{height:185px}.about{grid-template-columns:1fr;padding:25px;margin:55px 0 40px}.section-head{align-items:start;flex-direction:column}}
+
+    /* Photo Gallery - Added */
+    .photo-gallery{
+      margin:60px 0;
+    }
+    .photo-gallery h2{
+      font-size:1.8rem;
+      margin:0;
+    }
+    .photo-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+    .photo-grid img{
+      display:block;
+      width:100%;
+      height:300px;
+      object-fit:cover;
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      border:1px solid #f0eae6;
+      transition:.3s;
+    }
+    .photo-grid img:hover{
+      transform:translateY(-5px);
+      box-shadow:0 22px 55px #51405a1c;
+    }
+
+    @media(max-width:800px){
+      .hero{grid-template-columns:1fr;gap:10px;padding-top:35px}
+      .art{min-height:330px}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .links{gap:14px}
+      .photo-grid{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media(max-width:560px){
+      .wrap{width:min(100% - 28px,1120px)}
+      .links{display:none}
+      .hello{padding:8px 12px}
+      .hero{padding-bottom:30px}
+      h1{letter-spacing:-1.8px}
+      .art{min-height:300px}
+      .blob{width:260px;height:260px}
+      .note{width:225px;min-height:250px}
+      .grid{grid-template-columns:1fr}
+      .cover{height:185px}
+      .about{grid-template-columns:1fr;padding:25px;margin:55px 0 40px}
+      .section-head{align-items:start;flex-direction:column}
+      .photo-grid{grid-template-columns:1fr}
+      .photo-grid img{height:300px}
+    }
   </style>
 </head>
+
 <body>
   <header class="topbar">
     <div class="wrap nav">
       <a class="brand" href="#"><span class="brand-mark">✦</span><span>My Little Journal</span></a>
-      <nav class="links"><a href="#home">Home</a><a href="#posts">Blog</a><a href="#about">About</a></nav>
+      <nav class="links">
+        <a href="#home">Home</a>
+        <a href="#posts">Blog</a>
+        <a href="#about">About</a>
+      </nav>
       <a class="hello" href="mailto:hello@example.com">Say hello ↗</a>
     </div>
   </header>
+
   <main class="wrap">
     <section class="hero" id="home">
       <div>
         <span class="eyebrow">✷ A LITTLE SPACE ON THE INTERNET</span>
         <h1>Stories, thoughts<br> & <span class="gradient">little things.</span></h1>
         <p class="intro">မင်္ဂလာပါ။ ဒီနေရာလေးက ကျွန်တော့်ရဲ့ အတွေးအမြင်တွေ၊ နေ့စဉ်အတွေ့အကြုံတွေနဲ့ စိတ်ကူးလေးတွေကို မျှဝေဖို့ ဖန်တီးထားတဲ့ ကိုယ်ပိုင် Blog လေးပါ။</p>
-        <div class="actions"><a class="btn primary" href="#posts">Explore the blog <span>↘</span></a><a class="btn secondary" href="#about">About me</a></div>
+        <div class="actions">
+          <a class="btn primary" href="#posts">Explore the blog <span>↘</span></a>
+          <a class="btn secondary" href="#about">About me</a>
+        </div>
       </div>
-      <div class="art" aria-label="Decorative journal illustration"><div class="blob"></div><span class="spark s1">✦</span><span class="spark s2">✿</span><span class="spark s3">✧</span><div class="note"><div class="note-top"><span>MY JOURNAL</span><span>01 / ∞</span></div><h3>Collect moments,<br><span class="gradient">not things.</span></h3><p>Small notes, big feelings, and everything in between.</p><div class="scribble">☁️ 🌷 ✨</div></div></div>
+
+      <div class="art" aria-label="Decorative journal illustration">
+        <div class="blob"></div>
+        <span class="spark s1">✦</span>
+        <span class="spark s2">✿</span>
+        <span class="spark s3">✧</span>
+        <div class="note">
+          <div class="note-top"><span>MY JOURNAL</span><span>01 / ∞</span></div>
+          <h3>Collect moments,<br><span class="gradient">not things.</span></h3>
+          <p>Small notes, big feelings, and everything in between.</p>
+          <div class="scribble">☁️ 🌷 ✨</div>
+        </div>
+      </div>
     </section>
+
     <section id="posts">
-      <div class="section-head"><div><h2>Latest stories ✍️</h2><p>အတွေးလေးတွေကို စာမျက်နှာပေါ် ချရေးထားပါတယ်။</p></div></div>
-      <div class="filters" aria-label="Filter posts"><button class="filter active" data-filter="all">All stories</button><button class="filter" data-filter="Life">Life</button><button class="filter" data-filter="Thoughts">Thoughts</button><button class="filter" data-filter="Creativity">Creativity</button></div>
-      <div class="grid" id="postGrid">
-        <article class="post" data-category="Life"><div class="cover c1"><span>🌤️</span></div><div class="post-body"><span class="tag">LIFE</span><h3>နေ့သစ်တစ်နေ့ကို စတင်ခြင်း</h3><p>နေ့တိုင်းမှာ အသစ်တစ်ဖန် စတင်ခွင့်ရှိတယ်ဆိုတာကို သတိရပါ။</p><div class="meta"><span>June 12, 2026</span><span>3 min read</span></div></div></article>
-        <article class="post" data-category="Thoughts"><div class="cover c2"><span>💭</span></div><div class="post-body"><span class="tag">THOUGHTS</span><h3>တိတ်ဆိတ်ခြင်းရဲ့ အဓိပ္ပာယ်</h3><p>တစ်ခါတလေ စကားမပြောဘဲ နေခြင်းကလည်း ကိုယ့်ကိုယ်ကို နားထောင်ခြင်းပါပဲ။</p><div class="meta"><span>June 08, 2026</span><span>4 min read</span></div></div></article>
-        <article class="post" data-category="Creativity"><div class="cover c3"><span>🎨</span></div><div class="post-body"><span class="tag">CREATIVITY</span><h3>စိတ်ကူးတစ်ခုရဲ့ အစ</h3><p>ပြီးပြည့်စုံဖို့ မစောင့်ပါနဲ့။ စတင်ဖို့ပဲ လိုအပ်တာပါ။</p><div class="meta"><span>June 01, 2026</span><span>2 min read</span></div></div></article>
+      <div class="section-head">
+        <div>
+          <h2>Latest stories ✍️</h2>
+          <p>အတွေးလေးတွေကို စာမျက်နှာပေါ် ချရေးထားပါတယ်။</p>
+        </div>
       </div>
+
+      <div class="filters" aria-label="Filter posts">
+        <button class="filter active" data-filter="all">All stories</button>
+        <button class="filter" data-filter="Life">Life</button>
+        <button class="filter" data-filter="Thoughts">Thoughts</button>
+        <button class="filter" data-filter="Creativity">Creativity</button>
+      </div>
+
+      <div class="grid" id="postGrid">
+        <article class="post" data-category="Life">
+          <div class="cover c1"><span>🌤️</span></div>
+          <div class="post-body">
+            <span class="tag">LIFE</span>
+            <h3>နေ့သစ်တစ်နေ့ကို စတင်ခြင်း</h3>
+            <p>နေ့တိုင်းမှာ အသစ်တစ်ဖန် စတင်ခွင့်ရှိတယ်ဆိုတာကို သတိရပါ။</p>
+            <div class="meta"><span>June 12, 2026</span><span>3 min read</span></div>
+          </div>
+        </article>
+
+        <article class="post" data-category="Thoughts">
+          <div class="cover c2"><span>💭</span></div>
+          <div class="post-body">
+            <span class="tag">THOUGHTS</span>
+            <h3>တိတ်ဆိတ်ခြင်းရဲ့ အဓိပ္ပာယ်</h3>
+            <p>တစ်ခါတလေ စကားမပြောဘဲ နေခြင်းကလည်း ကိုယ့်ကိုယ်ကို နားထောင်ခြင်းပါပဲ။</p>
+            <div class="meta"><span>June 08, 2026</span><span>4 min read</span></div>
+          </div>
+        </article>
+
+        <article class="post" data-category="Creativity">
+          <div class="cover c3"><span>🎨</span></div>
+          <div class="post-body">
+            <span class="tag">CREATIVITY</span>
+            <h3>စိတ်ကူးတစ်ခုရဲ့ အစ</h3>
+            <p>ပြီးပြည့်စုံဖို့ မစောင့်ပါနဲ့။ စတင်ဖို့ပဲ လိုအပ်တာပါ။</p>
+            <div class="meta"><span>June 01, 2026</span><span>2 min read</span></div>
+          </div>
+        </article>
+      </div>
+
       <div class="empty" id="empty">ဒီအမျိုးအစားမှာ Post မရှိသေးပါ။</div>
     </section>
-    <section class="about" id="about"><div class="avatar">👋</div><div><h2>A little about me</h2><p>ကျွန်တော်က စိတ်ကူးအသစ်တွေကို စမ်းသပ်ရတာ၊ စာရေးရတာနဲ့ အတွေ့အကြုံအသစ်တွေကို လေ့လာရတာ နှစ်သက်သူတစ်ယောက်ပါ။ ဒီ Blog လေးမှာ ကျွန်တော့်အကြောင်းကို နည်းနည်းချင်း မျှဝေသွားပါမယ်။</p></div></section>
+
+    <section class="about" id="about">
+      <div class="avatar">👋</div>
+      <div>
+        <h2>A little about me</h2>
+        <p>ကျွန်တော်က စိတ်ကူးအသစ်တွေကို စမ်းသပ်ရတာ၊ စာရေးရတာနဲ့ အတွေ့အကြုံအသစ်တွေကို လေ့လာရတာ နှစ်သက်သူတစ်ယောက်ပါ။ ဒီ Blog လေးမှာ ကျွန်တော့်အကြောင်းကို နည်းနည်းချင်း မျှဝေသွားပါမယ်။</p>
+      </div>
+    </section>
+
+    <!-- My Photos Gallery -->
+    <section class="photo-gallery" id="gallery">
+      <div class="section-head">
+        <div>
+          <h2>My Favorite Memories ❤️</h2>
+          <p>Beautiful moments worth remembering.</p>
+        </div>
+      </div>
+
+      <div class="photo-grid">
+        <img src="./photo1.png" alt="My Photo 1">
+        <img src="./photo2.png" alt="My Photo 2">
+        <img src="./photo3.png" alt="My Photo 3">
+      </div>
+    </section>
+
   </main>
-  <footer><div class="wrap foot"><span>© 2026 My Little Journal. Made with ♡</span><span>Keep creating · Keep growing</span></div></footer>
+
+  <footer>
+    <div class="wrap foot">
+      <span>© 2026 My Little Journal. Made with ♡</span>
+      <span>Keep creating · Keep growing</span>
+    </div>
+  </footer>
+
   <script>
-    const buttons=[...document.querySelectorAll('.filter')], posts=[...document.querySelectorAll('.post')], empty=document.getElementById('empty');
+    const buttons=[...document.querySelectorAll('.filter')],
+    posts=[...document.querySelectorAll('.post')],
+    empty=document.getElementById('empty');
+
     buttons.forEach(button=>button.addEventListener('click',()=>{
       buttons.forEach(b=>b.classList.toggle('active',b===button));
-      const category=button.dataset.filter; let visible=0;
-      posts.forEach(post=>{const show=category==='all'||post.dataset.category===category;post.style.display=show?'':'none';if(show)visible++});
+      const category=button.dataset.filter;
+      let visible=0;
+
+      posts.forEach(post=>{
+        const show=category==='all'||post.dataset.category===category;
+        post.style.display=show?'':'none';
+        if(show)visible++;
+      });
+
       empty.style.display=visible?'none':'block';
     }));
   </script>
