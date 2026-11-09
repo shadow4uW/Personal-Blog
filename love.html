@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffe5ef">
+<title>ကလေးလေးရေ ❣️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Noto+Sans+Myanmar:wght@400;500;600;700&display=swap');
+:root{--pink:#e85d91;--deep:#a83b69;--pale:#fff1f6}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Quicksand','Noto Sans Myanmar',sans-serif;color:var(--deep);background:linear-gradient(145deg,#ffe0eb,#fff5f8 48%,#ffd9e8);min-height:100vh;overflow-x:hidden}
+#floaties{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.floaty{position:absolute;bottom:-45px;animation:rise linear forwards;opacity:.78}
+@keyframes rise{to{transform:translateY(-115vh) rotate(35deg);opacity:0}}
+main{position:relative;z-index:1;width:min(92%,560px);margin:24px auto 40px}
+.panel{background:#ffffffdf;border:1px solid #fff;border-radius:30px;padding:clamp(22px,5vw,34px);box-shadow:0 18px 55px #c84b7c22;text-align:center;backdrop-filter:blur(8px);animation:enter .8s ease both}
+@keyframes enter{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:none}}
+h1{font-size:clamp(25px,6vw,34px);color:var(--pink);margin:12px 0}
+h2{color:var(--pink);margin:10px 0}
+p{line-height:1.9;margin:12px 0}
+.heart{font-size:64px;display:inline-block;animation:beat 1.2s infinite}
+@keyframes beat{0%,100%{transform:scale(1)}25%{transform:scale(1.17)}50%{transform:scale(1)}75%{transform:scale(1.1)}}
+.btn{border:0;border-radius:999px;padding:13px 22px;margin:8px 4px;background:linear-gradient(120deg,#f49abc,#df4e87);color:white;font:700 15px inherit;cursor:pointer;box-shadow:0 7px 18px #e85d9133;transition:.2s}
+.btn:active{transform:scale(.95)}
+.btn.alt{background:white;color:var(--pink);border:1px solid #f3b1ca}
+.hidden{display:none!important}
+.hero-photo{width:min(100%,330px);height:390px;object-fit:cover;object-position:center 35%;border-radius:26px;border:7px solid white;box-shadow:0 12px 30px #b743722b;transform:rotate(-2deg);animation:photoFloat 3s ease-in-out infinite}
+@keyframes photoFloat{50%{transform:rotate(1deg) translateY(-7px)}}
+.envelope{font-size:92px;display:inline-block;cursor:pointer;animation:bob 1.5s infinite}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.letter{background:#fff2f7;border:1px dashed #e99aba;border-radius:22px;padding:22px 18px;line-height:2.1;margin:20px 0;animation:enter .8s ease}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:22px 0}
+.polaroid{background:white;padding:9px 9px 15px;border-radius:8px;box-shadow:0 8px 22px #a83b6920;cursor:pointer;transition:transform .25s}
+.polaroid:nth-child(odd){transform:rotate(-2deg)}.polaroid:nth-child(even){transform:rotate(2deg)}
+.polaroid:hover{transform:rotate(0) scale(1.025)}
+.polaroid img{width:100%;height:210px;object-fit:cover;border-radius:4px;display:block}
+.polaroid span{display:block;padding-top:10px;font-size:13px;color:#c05b83}
+.polaroid:first-child{grid-column:span 2}.polaroid:first-child img{height:290px;object-position:center 35%}
+#lightbox{position:fixed;inset:0;background:#28131edb;display:none;align-items:center;justify-content:center;z-index:20;padding:18px}
+#lightbox.show{display:flex}
+#lightbox img{max-width:min(94vw,650px);max-height:85vh;object-fit:contain;border:7px solid white;border-radius:16px}
+.close{position:absolute;top:16px;right:20px;color:white;font-size:34px;background:none;border:0;cursor:pointer}
+.footer{font-size:12px;color:#c77a98;margin-top:24px}
+.small{font-size:13px;color:#b86a89}
+@media(max-width:380px){.polaroid img{height:165px}.polaroid:first-child img{height:230px}.hero-photo{height:340px}}
+</style>
+</head>
+<body>
+<div id="floaties"></div>
+<main>
+<div class="panel">
+<section id="page1">
+ <div class="heart">💗</div>
+ <h1>ကလေးလေးရေ ❣️</h1>
+ <p>မင်းအတွက် အမှတ်တရ Surprise လေးတစ်ခု လုပ်ထားတယ်နော် 🥰</p>
+ <img class="hero-photo" src="images/photo1.png" alt="အမှတ်တရဓာတ်ပုံ">
+ <p>ခဏလေး အချိန်ပေးပြီး ကြည့်ပေးပါဦး 🌷</p>
+ <button class="btn" onclick="showPage(2)">Surprise ဖွင့်ကြည့်မယ် 💌</button>
+</section>
+
+<section id="page2" class="hidden">
+ <div class="heart">💌</div>
+ <h1>ကလေးလေးအတွက် စာလေးတစ်စောင်</h1>
+ <p>ဒီစာအိတ်လေးကို နှိပ်ကြည့်ပါဦးနော် 💕</p>
+ <div class="envelope" id="env" onclick="openLetter()">💌</div>
+ <br><button class="btn" onclick="openLetter()">စာဖတ်ကြည့်မယ် 💗</button>
+</section>
+
+<section id="page3" class="hidden">
+ <div class="heart">🌸</div>
+ <h1>ကလေးလေးရဲ့ အမှတ်တရပုံလေးတွေ</h1>
+ <p>ပုံလေးတွေကို နှိပ်ရင် အကြီးကြည့်လို့ရတယ်နော် ✨</p>
+ <div class="gallery">
+  <div class="polaroid" onclick="viewPhoto(0)"><img src="images/photo1.png" alt="Photo 1"><span>ချစ်စရာ အမှတ်တရလေး 💗</span></div>
+  <div class="polaroid" onclick="viewPhoto(1)"><img src="images/photo2.png" alt="Photo 2"><span>အပြုံးလေး 🌷</span></div>
+  <div class="polaroid" onclick="viewPhoto(2)"><img src="images/photo3.png" alt="Photo 3"><span>အမှတ်တရနေ့လေး ✨</span></div>
+ </div>
+ <button class="btn" onclick="showPage(4)">နောက်ထပ် Surprise 🎁</button>
+</section>
+
+<section id="page4" class="hidden">
+ <div class="heart">💝</div>
+ <h1>ကလေးလေးရေ... ❣️</h1>
+ <div class="letter">
+  မင်းနဲ့ စကားပြောရတဲ့ အချိန်လေးတွေက<br>
+  ကိုယ့်နေ့ရက်တွေကို ပိုပြီး လှပစေတယ်။ 🥰<br><br>
+  မင်းရဲ့ အပြုံးလေးတွေကိုလည်း<br>
+  အမြဲမြင်ချင်ပါတယ်။ 🌸<br><br>
+  ဒီ Website လေးကနေတစ်ဆင့်<br>
+  မင်းကို ပျော်စေချင်ရုံလေးပါ။<br><br>
+  <strong>မင်းဟာ ကိုယ့်အတွက် အမှတ်တရဖြစ်စေတဲ့<br>လူတစ်ယောက်ပါ။ ❤️</strong>
+ </div>
+ <h2>အမြဲတမ်း ပျော်ရွှင်ပါစေ ✨</h2>
+ <div class="heart">🧸💗</div>
+ <p>With Love,</p><h2>ကိုယ် ❤️</h2>
+ <button class="btn alt" onclick="showPage(1)">အစကနေ ပြန်ကြည့်မယ် ↻</button>
+</section>
+<div class="footer">Made with care, just for you ❣️</div>
+</div>
+</main>
+
+<div id="lightbox" onclick="closePhoto()">
+ <button class="close" aria-label="Close" onclick="closePhoto()">×</button>
+ <img id="largePhoto" src="" alt="အကြီးကြည့်ရန်">
+</div>
+<script>
+function showPage(n){
+ for(let i=1;i<=4;i++)document.getElementById('page'+i).classList.add('hidden');
+ document.getElementById('page'+n).classList.remove('hidden');
+ window.scrollTo({top:0,behavior:'smooth'});
+ if(n===4)burst();
+}
+function openLetter(){
+ document.getElementById('env').style.transform='scale(1.2) rotate(-8deg)';
+ document.getElementById('env').textContent='💖';
+ setTimeout(()=>showPage(3),650);
+}
+const photos=['images/photo1.png','images/photo2.png','images/photo3.png'];
+function viewPhoto(i){
+ document.getElementById('largePhoto').src=photos[i];
+ document.getElementById('lightbox').classList.add('show');
+}
+function closePhoto(){document.getElementById('lightbox').classList.remove('show')}
+function floaty(){
+ const e=document.createElement('span');e.className='floaty';
+ e.textContent=['💗','💕','🌸','✨','❣️','🌷'][Math.floor(Math.random()*6)];
+ e.style.left=Math.random()*100+'vw';
+ e.style.fontSize=(15+Math.random()*23)+'px';
+ e.style.animationDuration=(5+Math.random()*5)+'s';
+ document.getElementById('floaties').appendChild(e);
+ setTimeout(()=>e.remove(),10500);
+}
+setInterval(floaty,450);
+function burst(){for(let i=0;i<28;i++)setTimeout(floaty,i*45)}
+</script>
+</body>
+</html>
